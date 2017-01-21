@@ -23,8 +23,8 @@ WORKDIR /opt/lapack-3.4.0
 RUN mv make.inc.example make.inc
 RUN sed -i 's/\#lib: blaslib variants lapacklib tmglib/lib: blaslib lapacklib tmglib/g' Makefile
 RUN sed -i 's/lib: lapacklib tmglib/\#lib: lapacklib tmglib/g' Makefile
-#RUN sed
-#RUN sed
+RUN sed -i 's/OPTS     = \-O2/OPTS     = \-O2 \-fPIC/g' make.inc
+RUN sed -i 's/NOOPT    = \-O0/NOOPT    = \-O0 \-fPIC/g' make.inc
 RUN make
 
 WORKDIR /opt/ATLAS3.10.3
